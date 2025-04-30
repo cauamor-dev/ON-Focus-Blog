@@ -744,7 +744,7 @@ aside {
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid #000;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -856,6 +856,7 @@ aside {
     border-radius: 12px;
     padding: 10px;
     backdrop-filter: blur(10px);
+    border: 2px solid #000;
 }
 
 .menu-topics ul {
@@ -899,7 +900,7 @@ aside {
     align-items: center;
     gap: 15px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid #000;
     transition: all 0.3s ease;
 }
 
