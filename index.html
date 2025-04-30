@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<!-- Define o idioma e o tema inicial do site -->
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <!-- Configurações básicas do documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - ON Focus</title>
+    
+    <!-- Importação das fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Arquivo de estilos principal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Overlay para o menu mobile -->
+    <div class="menu-overlay"></div>
+    
+    <!-- Header Desktop - Contém a barra de pesquisa e botão de tema -->
+    <div class="desktop-header">
+        <div class="theme-search-container">
+            <!-- Barra de pesquisa desktop -->
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquisar...">
+                <button type="button">🔍</button>
+            </div>
+            <!-- Botão de alternar tema -->
+            <button class="theme-toggle">
+                <span class="theme-toggle-dark">🌙</span>
+                <span class="theme-toggle-light">☀️</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Header Mobile - Versão compacta para dispositivos móveis -->
+    <div class="mobile-header">
+        <!-- Botão do menu hamburguer -->
+        <div class="mobile-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- Logo do site versão mobile -->
+        <div class="logo">
+            <span class="logo-text">ON</span>
+            <span class="logo-dot"></span>
+            <span class="logo-text">Focus</span>
+        </div>
+        <!-- Ações mobile (pesquisa e tema) -->
+        <div class="mobile-actions">
+            <button class="search-toggle" title="Pesquisar">🔍</button>
+            <button class="theme-toggle" title="Alternar tema">
+                <span class="theme-toggle-dark">🌙</span>
+                <span class="theme-toggle-light">☀️</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de busca - Interface de pesquisa moderna -->
+    <div class="search-modal">
+        <div class="search-modal-content">
+            <div class="search-header">
+                <div class="search-bar">
+                    <!-- Ícone de pesquisa SVG -->
+                    <button type="button" class="search-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <!-- Campo de pesquisa -->
+                    <input type="text" placeholder="O que você procura?" autofocus>
+                    <!-- Botão de fechar SVG -->
+                    <button type="button" class="close-search" aria-label="Fechar busca">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Área de sugestões de busca -->
+            <div class="search-suggestions">
+                <h3>Sugestões de busca</h3>
+                <div class="suggestion-tags">
+                    <button class="suggestion-tag">Treino HIIT</button>
+                    <button class="suggestion-tag">Dieta Low Carb</button>
+                    <button class="suggestion-tag">Mindfulness</button>
+                    <button class="suggestion-tag">Ganho muscular</button>
+                </div>
+            </div>
+            <!-- Área para resultados da pesquisa -->
+            <div class="search-results"></div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <button class="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- Menu lateral (sidebar) -->
+    <aside>
+        <!-- Logo principal -->
+        <a href="#" class="logo-link">
+            <img src="imagens/logo.png" alt="Logo ON Focus" class="logo">
+        </a>
+        <div class="divider"></div>
+        <!-- Menu de navegação principal -->
+        <nav class="menu-topics">
+            <ul>
+                <li><a href="#treinos">💪 TREINOS</a></li>
+                <li><a href="#dietas">🥗 DIETAS</a></li>
+            </ul>
+        </nav>
+        <div class="divider"></div>
+        <!-- Seção do perfil do usuário -->
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="imagens/download.png" alt="Foto do Perfil" class="avatar">
+            </div>
+            <div class="profile-info">
+                <h3 class="profile-name">Nome do Usuário</h3>
+                <p class="profile-role">Personal Trainer</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="content">
+        <header class="intro">
+            <h1>ON Focus Blog</h1>
+            <p>Sua rede de notícias sobre o mundo fitness</p>
+        </header>
+
+        <!-- Trending Topics -->
+        <section class="trending-topics">
+            <h2>Trending Topics</h2>
+            <div class="trending-grid">
+                <a href="#" class="trending-item">
+                    <span class="trending-number">01</span>
+                    <div class="trending-content">
+                        <span class="tag health">❤️ Saúde</span>
+                        <h3>Os Benefícios do Jejum Intermitente</h3>
+                    </div>
+                </a>
+                <a href="#" class="trending-item">
+                    <span class="trending-number">02</span>
+                    <div class="trending-content">
+                        <span class="tag exercise">🏋️ Exercícios</span>
+                        <h3>Treino em Casa vs Academia</h3>
+                    </div>
+                </a>
+                <a href="#" class="trending-item">
+                    <span class="trending-number">03</span>
+                    <div class="trending-content">
+                        <span class="tag mindset">🧠 Mindset</span>
+                        <h3>Como Manter a Motivação</h3>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="topics-filter">
+            <h2>Escolha seus tópicos de interesse</h2>
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <input type="checkbox" id="nutrition" class="topic-checkbox">
+                    <label for="nutrition" class="topic-label">
+                        <span class="topic-emoji">🥗</span>
+                        <span class="topic-text">Alimentação e Nutrição</span>
+                    </label>
+                </div>
+                <div class="topic-card">
+                    <input type="checkbox" id="exercise" class="topic-checkbox">
+                    <label for="exercise" class="topic-label">
+                        <span class="topic-emoji">🏋️</span>
+                        <span class="topic-text">Prática de Exercícios</span>
+                    </label>
+                </div>
+                <div class="topic-card">
+                    <input type="checkbox" id="health" class="topic-checkbox">
+                    <label for="health" class="topic-label">
+                        <span class="topic-emoji">❤️</span>
+                        <span class="topic-text">Saúde e Bem-estar</span>
+                    </label>
+                </div>
+                <div class="topic-card">
+                    <input type="checkbox" id="mindset" class="topic-checkbox">
+                    <label for="mindset" class="topic-label">
+                        <span class="topic-emoji">🧠</span>
+                        <span class="topic-text">Motivação e Mindset</span>
+                    </label>
+                </div>
+                <div class="topic-card">
+                    <input type="checkbox" id="education" class="topic-checkbox">
+                    <label for="education" class="topic-label">
+                        <span class="topic-emoji">👩‍⚕️</span>
+                        <span class="topic-text">Curiosidades e Conteúdo Educativo</span>
+                    </label>
+                </div>
+                <div class="topic-card">
+                    <input type="checkbox" id="routines" class="topic-checkbox">
+                    <label for="routines" class="topic-label">
+                        <span class="topic-emoji">📅</span>
+                        <span class="topic-text">Rotinas e Desafios</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resultados da Pesquisa -->
+        <section class="search-results" style="display: none;">
+            <h2>Resultados da Pesquisa</h2>
+            <div class="results-grid"></div>
+        </section>
+
+        <section class="news-grid">
+            <article class="news-card featured">
+                <div class="news-image">
+                    <img src="imagens/treino.jpg" alt="Treino HIIT">
+                </div>
+                <div class="news-content">
+                    <div class="news-tags">
+                        <span class="tag exercise">🏋️ Prática de Exercícios</span>
+                        <span class="tag health">❤️ Saúde e Bem-estar</span>
+                    </div>
+                    <h2>HIIT: O Treino que Revolucionou o Mundo Fitness</h2>
+                    <p>Descubra como o treinamento intervalado de alta intensidade pode maximizar seus resultados em menos tempo, combinando exercícios explosivos com períodos estratégicos de recuperação.</p>
+                    <a href="#" class="read-more">Ler mais</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-image">
+                    <img src="imagens/prato.jpg" alt="Prato nutritivo">
+                </div>
+                <div class="news-content">
+                    <div class="news-tags">
+                        <span class="tag nutrition">🥗 Alimentação e Nutrição</span>
+                    </div>
+                    <h2>Alimentação Intuitiva: Nova Tendência em Nutrição</h2>
+                    <p>Como reconectar-se com seus sinais naturais de fome e saciedade para uma relação mais saudável com a comida.</p>
+                    <a href="#" class="read-more">Ler mais</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-image">
+                    <img src="imagens/mindset.jpg" alt="Meditação fitness">
+                </div>
+                <div class="news-content">
+                    <div class="news-tags">
+                        <span class="tag mindset">🧠 Motivação e Mindset</span>
+                        <span class="tag routines">📅 Rotinas e Desafios</span>
+                    </div>
+                    <h2>Mindset Vencedor: Transforme sua Mentalidade</h2>
+                    <p>Estratégias práticas para desenvolver uma mentalidade forte e manter a motivação em sua jornada fitness.</p>
+                    <a href="#" class="read-more">Ler mais</a>
+                </div>
+            </article>
+
+            <article class="news-card wide">
+                <div class="news-image">
+                    <img src="imagens/ganho.jpg " alt="Ciência do exercício">
+                </div>
+                <div class="news-content">
+                    <div class="news-tags">
+                        <span class="tag education">👩‍⚕️ Curiosidades e Conteúdo Educativo</span>
+                    </div>
+                    <h2>A Ciência Por Trás do Ganho Muscular</h2>
+                    <p>Um mergulho profundo nos processos biológicos que ocorrem durante o treino e como otimizar seus resultados com base em evidências científicas.</p>
+                    <a href="#" class="read-more">Ler mais</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="newsletter">
+            <div class="newsletter-content">
+                <h2>Fique por dentro!</h2>
+                <p>Receba as últimas novidades sobre fitness, nutrição e bem-estar diretamente no seu e-mail.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit">Inscrever-se</button>
+                </form>
+            </div>
+            <div class="newsletter-decoration">
+                <span>🏃‍♂️</span>
+                <span>💪</span>
+                <span>🥗</span>
+            </div>
+        </section>
+
+        <div class="load-more">
+            <button class="load-more-btn">
+                Carregar mais notícias
+                <span class="loader"></span>
+            </button>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre ON Focus</h3>
+                <p>Seu destino diário para as últimas novidades e tendências do mundo fitness, nutrição e bem-estar.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Treinos</a></li>
+                    <li><a href="#">Dietas</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">📱 Instagram</a>
+                    <a href="#" class="social-link">🐦 Twitter</a>
+                    <a href="#" class="social-link">📘 Facebook</a>
+                    <a href="#" class="social-link">🎥 YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ON Focus Blog. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
