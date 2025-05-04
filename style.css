@@ -1373,6 +1373,7 @@ aside {
     margin-top: 80px;
     padding: 60px 40px 20px;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+    margin-left: 290px;
 }
 
 .footer-content {
@@ -1971,5 +1972,11 @@ aside .theme-toggle:hover {
 @media (max-width: 768px) {
     .desktop-header {
         display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .site-footer {
+        margin-left: 0;
     }
 }   
