@@ -150,3 +150,20 @@ document.addEventListener('keydown', (e) => {
         toggleSearchModal();
     }
 });
+
+/**
+ * Newsletter - Mensagem de sucesso ao inscrever
+ */
+const newsletterForm = document.querySelector('.newsletter-form');
+const newsletterContent = document.querySelector('.newsletter-content');
+
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Mensagem de sucesso
+        newsletterContent.innerHTML = `
+            <h2>Fique por dentro!</h2>
+            <p>Inscrição realizada com sucesso! Você receberá novidades no seu e-mail.</p>
+        `;
+    });
+}

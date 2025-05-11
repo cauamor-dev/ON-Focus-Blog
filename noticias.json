@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "titulo": "HIIT: O Treino que Revolucionou o Mundo Fitness",
+    "imagem": "imagens/treino.jpg",
+    "tags": ["Prática de Exercícios", "Saúde e Bem-estar"],
+    "resumo": "Descubra como o treinamento intervalado de alta intensidade pode maximizar seus resultados em menos tempo, combinando exercícios explosivos com períodos estratégicos de recuperação.",
+    "conteudo": "O HIIT (High-Intensity Interval Training) é uma metodologia de treino que alterna períodos curtos de exercício intenso com períodos de recuperação. Estudos mostram que o HIIT pode aumentar o metabolismo, melhorar a saúde cardiovascular e proporcionar resultados rápidos, mesmo com sessões curtas. Experimente incluir o HIIT na sua rotina para potencializar seus ganhos!"
+  },
+  {
+    "id": 2,
+    "titulo": "Alimentação Intuitiva: Nova Tendência em Nutrição",
+    "imagem": "imagens/prato.jpg",
+    "tags": ["Alimentação e Nutrição"],
+    "resumo": "Como reconectar-se com seus sinais naturais de fome e saciedade para uma relação mais saudável com a comida.",
+    "conteudo": "A alimentação intuitiva propõe ouvir o próprio corpo, respeitando sinais de fome e saciedade, sem dietas restritivas. Essa abordagem ajuda a criar uma relação mais equilibrada com a comida, promovendo saúde física e mental."
+  },
+  {
+    "id": 3,
+    "titulo": "Mindset Vencedor: Transforme sua Mentalidade",
+    "imagem": "imagens/mindset.jpg",
+    "tags": ["Motivação e Mindset", "Rotinas e Desafios"],
+    "resumo": "Estratégias práticas para desenvolver uma mentalidade forte e manter a motivação em sua jornada fitness.",
+    "conteudo": "Ter um mindset vencedor é fundamental para alcançar objetivos. Pratique a autoconfiança, estabeleça metas realistas e celebre pequenas conquistas. A motivação é construída diariamente!"
+  },
+  {
+    "id": 4,
+    "titulo": "A Ciência Por Trás do Ganho Muscular",
+    "imagem": "imagens/ganho.jpg",
+    "tags": ["Curiosidades e Conteúdo Educativo"],
+    "resumo": "Um mergulho profundo nos processos biológicos que ocorrem durante o treino e como otimizar seus resultados com base em evidências científicas.",
+    "conteudo": "O ganho muscular depende de estímulos adequados, alimentação balanceada e descanso. Entender a fisiologia do músculo ajuda a otimizar treinos e evitar lesões. Consulte sempre um profissional para melhores resultados."
+  }
+] 
