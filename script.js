@@ -65,20 +65,126 @@ backToTopButton.addEventListener('click', () => {
 });
 
 /**
- * Sistema de Carregamento de Notícias
- * Simula o carregamento de mais notícias
+ * Sistema de Carregamento e Exibição de Notícias
+ * Gerencia o carregamento e exibição das notícias com todas as informações
  */
-const loadMoreButton = document.querySelector('.load-more-btn');
-const newsGrid = document.querySelector('.news-grid');
+let todasNoticias = [];
+let noticiasExibidas = 0;
+const NOTICIAS_POR_PAGINA = 4;
 
-loadMoreButton.addEventListener('click', () => {
-    loadMoreButton.classList.add('loading');
+async function carregarNoticias() {
+    try {
+        const response = await fetch('noticias.json');
+        todasNoticias = await response.json();
+        noticiasExibidas = 0;
+        exibirNoticiasFiltradas(true);
+    } catch (error) {
+        console.error('Erro ao carregar notícias:', error);
+    }
+}
+
+function exibirNoticiasFiltradas(reset = false) {
+    const newsGrid = document.querySelector('.news-grid');
+    if (reset) {
+        newsGrid.innerHTML = '';
+        noticiasExibidas = 0;
+    }
+    const topicosSelecionados = Array.from(document.querySelectorAll('.topic-checkbox:checked')).map(cb => cb.nextElementSibling.querySelector('.topic-text').textContent.trim());
+    let noticiasParaExibir = todasNoticias;
+    if (topicosSelecionados.length > 0) {
+        noticiasParaExibir = todasNoticias.filter(noticia =>
+            noticia.tags.some(tag => topicosSelecionados.includes(tag))
+        );
+    }
+    // Paginação sem repetição
+    const inicio = noticiasExibidas;
+    const fim = noticiasExibidas + NOTICIAS_POR_PAGINA;
+    let noticiasPagina = noticiasParaExibir.slice(inicio, fim);
+    noticiasPagina.forEach(noticia => {
+        const noticiaElement = criarElementoNoticia(noticia);
+        newsGrid.appendChild(noticiaElement);
+    });
+    noticiasExibidas += noticiasPagina.length;
+    // Adiciona ou remove o botão de carregar mais
+    adicionarBotaoCarregarMais(newsGrid, noticiasParaExibir.length);
+}
+
+function adicionarBotaoCarregarMais(newsGrid, totalNoticias) {
+    // Remove botão antigo se existir
+    const botaoAntigo = document.querySelector('.load-more-btn');
+    if (botaoAntigo) botaoAntigo.parentElement.remove();
+    // Só adiciona o botão se ainda houver notícias para mostrar
+    if (noticiasExibidas < totalNoticias) {
+        const div = document.createElement('div');
+        div.className = 'load-more';
+        const btn = document.createElement('button');
+        btn.className = 'load-more-btn';
+        btn.innerHTML = '<span class="btn-text">Carregar mais notícias</span><span class="loader"></span>';
+        btn.onclick = () => exibirNoticiasFiltradas();
+        div.appendChild(btn);
+        newsGrid.parentNode.insertBefore(div, newsGrid.nextSibling);
+    }
+}
+
+function criarElementoNoticia(noticia) {
+    const article = document.createElement('article');
+    article.className = 'news-card';
+    article.dataset.id = noticia.id;
     
-    // Simula o carregamento de mais notícias (aqui você adicionaria a lógica real)
-    setTimeout(() => {
-        loadMoreButton.classList.remove('loading');
-    }, 1000);
+    // Formata a data
+    const dataFormatada = new Date(noticia.data_publicacao).toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+    });
+    
+    // Cria o HTML da notícia com todas as informações
+    article.innerHTML = `
+        <div class="news-tags">
+            ${noticia.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+        <div class="news-image">
+            <img src="${noticia.imagem}" alt="${noticia.titulo}">
+        </div>
+        <div class="news-content">
+            <div class="news-meta">
+                <span class="news-date">${dataFormatada}</span>
+            </div>
+            <h2 class="news-title">${noticia.titulo}</h2>
+            <p class="news-summary">${noticia.resumo}</p>
+            <div class="news-actions">
+                <a href="detalhes.html?id=${noticia.id}" class="read-more">Ler mais</a>
+                <span class="actions-spacer"></span>
+                <button class="share-btn-modern" onclick="compartilharNoticia(${noticia.id})" title="Compartilhar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    <span>Compartilhar</span>
+                </button>
+            </div>
+        </div>
+    `;
+    
+    // Adiciona evento de clique para abrir os detalhes
+    article.addEventListener('click', (e) => {
+        if (!e.target.closest('.share-btn')) {
+            window.location.href = `detalhes.html?id=${noticia.id}`;
+        }
+    });
+    
+    return article;
+}
+
+function compartilharNoticia(id) {
+    alert('Funcionalidade de compartilhamento não está disponível no momento.');
+}
+
+// Adiciona evento de mudança nos checkboxes de tópicos
+const checkboxesTopicos = document.querySelectorAll('.topic-checkbox');
+checkboxesTopicos.forEach(cb => {
+    cb.addEventListener('change', () => exibirNoticiasFiltradas(true));
 });
+
+// Carrega as notícias quando o documento estiver pronto
+document.addEventListener('DOMContentLoaded', carregarNoticias);
 
 /**
  * Menu Mobile
